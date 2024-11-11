@@ -1,7 +1,7 @@
 {
 	"env": {
 		"browser": true,
-		"es2021": true
+		"es2021": true,
 	},
 	"extends": [
 		"eslint:recommended",
@@ -10,26 +10,30 @@
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
 		"plugin:react/jsx-runtime",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaVersion": "latest",
-		"sourceType": "module"
+		"sourceType": "module",
 	},
 	"plugins": [],
 	"rules": {
 		"no-var": "error",
 		"eqeqeq": ["error", "always"],
-		"indent": ["warn", "tab", { "SwitchCase": 1, "offsetTernaryExpressions": true }],
+		"indent": [
+			"warn",
+			"tab",
+			{ "SwitchCase": 1, "offsetTernaryExpressions": true },
+		],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["error", "single"],
 		"prefer-const": [
 			"error",
 			{
 				"destructuring": "any",
-				"ignoreReadBeforeAssign": false
-			}
+				"ignoreReadBeforeAssign": false,
+			},
 		],
 		"semi": ["warn", "never"],
 		"no-unused-vars": "off",
@@ -37,34 +41,32 @@
 			"warn",
 			{
 				"args": "none",
-				"argsIgnorePattern": "^_"
-			}
+				"argsIgnorePattern": "^_",
+			},
 		],
 		"@typescript-eslint/consistent-type-imports": [
 			"error",
 			{
-				"prefer": "type-imports"
-			}
+				"prefer": "type-imports",
+			},
 		],
 		"@typescript-eslint/no-explicit-any": "off",
-		"react/jsx-key": ["warn", {"checkFragmentShorthand": true}],
-		"prettier/prettier": ["warn", {"trailingComma": "es5"}]
+		"react/jsx-key": ["warn", { "checkFragmentShorthand": true }],
+		"prettier/prettier": ["warn", { "trailingComma": "es5" }],
 	},
 	"overrides": [
 		{
-			"files": [
-				"*.json"
-			],
+			"files": ["*.json"],
 			"rules": {
 				"quotes": ["error", "double"],
-				"no-unused-expressions": "off"
-			}
-		}
+				"no-unused-expressions": "off",
+			},
+		},
 	],
 	"ignorePatterns": ["*.md"],
 	"settings": {
 		"react": {
-			"version": "detect"
-		}
-	}
+			"version": "detect",
+		},
+	},
 }

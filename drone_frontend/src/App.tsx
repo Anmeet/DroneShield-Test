@@ -14,7 +14,6 @@ const App = () => {
 			const data = JSON.parse(event.data)
 			console.log(data)
 		}
-
 	}, [])
 
 	return <Map />
