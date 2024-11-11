@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		// Standard ESLint extension
+		"dbaeumer.vscode-eslint",
+		// Standard Prettier extension
+		"esbenp.prettier-vscode"
+	]
+}

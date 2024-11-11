@@ -1,0 +1,20 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+
+  drone_publisher:
+    build:
+      context: ./drone_publisher
+    depends_on:
+      - redis
+
+  drone_subscriber:
+    build:
+      context: ./drone_subscriber
+    depends_on:
+      - redis
+    ports:
+      - "8080:8080"
