@@ -16,11 +16,16 @@
 		"useDefineForClassFields": true,
 		"noEmit": true,
 		"jsx": "react-jsx",
-		"types": ["vite-plugin-svgr/client", "vitest/globals"],
+		"types": [
+			"vite-plugin-svgr/client",
+			"vitest",
+			"vitest/globals",
+			"@testing-library/jest-dom"
+		],
 
 		/* Linting */
-		"strict": true,
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+		"strict": true
+	},
+	"include": ["src"],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }

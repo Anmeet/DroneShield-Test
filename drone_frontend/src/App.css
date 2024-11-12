@@ -1,3 +1,25 @@
 body {
 	margin: 0;
 }
+
+.error-message {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: red;
+	font-weight: bold;
+	font-size: 20px;
+	z-index:1000;
+}
+
+.app-container {
+	position: relative;
+}
+
+.checkbox-container {
+	z-index:999;
+    position: absolute;
+	top: 20px;
+    right: 20px;
+}

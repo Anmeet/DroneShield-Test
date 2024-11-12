@@ -1,22 +1,44 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
 import Map from './Map'
 import './App.css'
+import useDroneWebSocket from './hooks/useDroneWebSocket'
+
+export interface DronePosition {
+	latitude: number
+	longitude: number
+}
 
 const App = () => {
-	useEffect(() => {
-		const websocket = new WebSocket('ws://localhost:8080/')
+	const { dronePosition, path, error } = useDroneWebSocket()
+	const [isAutoCenter, setisAutoCenter] = useState(true)
 
-		websocket.onopen = () => {
-			console.log('Web Socket connected.')
-		}
+	const handleAutoCenterChange = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		setisAutoCenter(event.target.checked)
+	}
 
-		websocket.onmessage = (event) => {
-			const data = JSON.parse(event.data)
-			console.log(data)
-		}
-	}, [])
+	return (
+		<div className='app-container'>
+			<div className='checkbox-container'>
+				<label>
+					<input
+						type='checkbox'
+						checked={isAutoCenter}
+						onChange={handleAutoCenterChange}
+					/>
+					Auto-Center on Drone
+				</label>
+			</div>
 
-	return <Map />
+			{error && <div className='error-message'>{error}</div>}
+			<Map
+				isAutoCenter={isAutoCenter}
+				path={path}
+				dronePosition={dronePosition}
+			/>
+		</div>
+	)
 }
 
 export default App

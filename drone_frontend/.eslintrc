@@ -21,12 +21,13 @@
 	"rules": {
 		"no-var": "error",
 		"eqeqeq": ["error", "always"],
+
 		"indent": [
 			"warn",
 			"tab",
 			{ "SwitchCase": 1, "offsetTernaryExpressions": true },
 		],
-		"linebreak-style": ["error", "unix"],
+		"linebreak-style": ["off"],
 		"quotes": ["error", "single"],
 		"prefer-const": [
 			"error",

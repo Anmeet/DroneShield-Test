@@ -121,6 +121,37 @@ Please conclude by including some commentary on:
 
 (i) assumptions and decisions that you made whilst approaching these tasks
 
+ - State Management: I assumed that dronePosition and path state would be handled by useDroneWebSocket hook, which will update these states based on the websocket events. It ensure that updates will be seamlessly reflected in Map component.
+
+- Error Handling: I ensure that the application gracefully handles potential issues such as network errors in websocket communication or Leaflet map related errors. I added error handling where errors could occur, like in websocket connection and when Leaflet operations could potentially fail(eg  getBounds, setView).
+
+- Mocking: When setting up mocks for react-leaflet and react-leaflet-marker, I assumed that these libraries were central to the map rendering and interactions in the app. The mocks were added in a reusable file(reactLeafletMock.tsx), assuming it would help with scalibility and code reuse.
+
+- Testing:  I assumed that unit tests would focus on specific behaviors like maps auto-center functionality(which uses useAutoCenterMap).Additionally, tests would cover error handling to ensure that unexpected conditions are handled.
+  
+- Custom Hook: I have created a custom Hook to enable auto center when necessary and another hook to manage the websocket connection and update drone position and paths. This will benefit from separation of concerns and make App and Map component more cleaner.
+
 (ii) ideas for further improvements in your solutions
 
+- Error Boundaries: I have added some error handling at specific points. React's error boundaries could be leveraged to catch any unforseen errors in component tree. This will prevent the entire app from crashing and coud show a fallback UI in case of severe error.
+
+- Retries for WebSocket: Websocket failures could be handled by adding a retry mechanism. For example, if the connection fails, the app could attempt to reconnect after a delay or provide an option to user to retry the connection.
+  
+- UI enhancements:  The UI enhancements can be done in several ways. Such as if web socket data takes time to load, we can add a loading spinner or skeleton screens to improve the UX while data is being fetched or processed.Also, Error Dialog can be used to display the error message.
+  
+- Unit Testing: We can add more unit tests such as Unit testing for websocket handling where tests can be written to simulate different websocket events( eg. onclose,on errors, etc) to ensure that the app responds correctly to different types of connection failures.
+
 (iii) what would need to be done to make it production ready including testing.
+
+- Unit Testing: The current tests cover specific behaviors but more edge cases should be added. e.g.  Simulate websocket failures, retries, and successful connections, test behaviour when websocket server is down,test behaviour when map fails to load or when map-related functions fail.
+  
+-Integration Tests: The integration tests to test the integration between the Map, useAutoCenterMap, and useDroneWebSocket hooks, especially for real-time interactions like positioning updates and map auto-centering.
+
+-End to End Testing: To validate the UX, end-to-end tests should be written using tools like Cypress.
+
+- Error Handling in Production: The Centralized Error Logging to track errors in real-time and monitor websocket disconnection or failures in the app. In case of major failures like map failing to load we can provide an error message or fallback UI.
+  
+- Performance Optimization: we can use Debounce or Throttling for Map updates. if the drone position is being updated frequently then we can use debouncing or throttling updates to the map to avoid unnecessary re-renderes. Also, we can use React Lazy Loading and React Suspense for loading large map libraries or websocket related  dependencies.
+  
+- Security Considerations: As Websocket data is paresed directly into a DronePosition, we can ensure that input from the websocket is validated to prevent any malicious data from being processed.
+  
