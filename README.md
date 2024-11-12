@@ -145,9 +145,9 @@ Please conclude by including some commentary on:
 
 - Unit Testing: The current tests cover specific behaviors but more edge cases should be added. e.g.  Simulate websocket failures, retries, and successful connections, test behaviour when websocket server is down,test behaviour when map fails to load or when map-related functions fail.
   
--Integration Tests: The integration tests to test the integration between the Map, useAutoCenterMap, and useDroneWebSocket hooks, especially for real-time interactions like positioning updates and map auto-centering.
+- Integration Tests: The integration tests to test the integration between the Map, useAutoCenterMap, and useDroneWebSocket hooks, especially for real-time interactions like positioning updates and map auto-centering.
 
--End to End Testing: To validate the UX, end-to-end tests should be written using tools like Cypress.
+- End to End Testing: To validate the UX, end-to-end tests should be written using tools like Cypress.
 
 - Error Handling in Production: The Centralized Error Logging to track errors in real-time and monitor websocket disconnection or failures in the app. In case of major failures like map failing to load we can provide an error message or fallback UI.
   
